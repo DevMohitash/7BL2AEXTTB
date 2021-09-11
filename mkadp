@@ -453,7 +453,11 @@ done
 ctl /sys/module/tcp_cubic/parameters/hystart_detect 2
 
 # Misc Kernel Teaks
-ctl /sys/kernel/debug/sched_features NO_NEXT_BUDDY
+ctl /sys/kernel/debug/sched_features NEXT_BUDDY
+ctl /sys/kernel/debug/sched_features GENTLE_FAIR_SLEEPERS
+ctl /sys/kernel/debug/sched_features TTWU_QUEUE
+ctl /sys/kernel/debug/sched_features RT_RUNTIME_SHARE
+ctl /sys/kernel/debug/sched_features AFFINE_WAKEUPS
 
 for cpu in /sys/devices/system/cpu/*/sched_load_boost
 do
