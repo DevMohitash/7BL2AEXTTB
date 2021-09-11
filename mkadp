@@ -85,6 +85,7 @@ $pme 'com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver'
 am start -a android.intent.action.MAIN -e toasttext "Clearing App data" -n mkadp.toast/.MainActivity
 
 $BB rm -rf /data/data/com.mkadp.blapptwo
+$BB rm -rf /data/data/com.mkadp.blapptwotbone
 
 am start -a android.intent.action.MAIN -e toasttext "Removing Module that will take affect after reboot..." -n mkadp.toast/.MainActivity
 
