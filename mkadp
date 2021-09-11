@@ -93,7 +93,8 @@ sync
 kmsg2 $(date)
 kmsg2 "ButterFly"
 kmsg2 "Extremely Aggressive"
-kmsg2 "Verson 8.3"
+kmsg2 "SeverBased v8.3.1 Test"
+kmsg2 "Last Updated on 11-Sep-2021 11:30 [HH:MM] IST"
 kmsg2 "----"
 kmsg2 "Prop Tweaks already applied"
 kmsg2 "while boot"
@@ -211,35 +212,15 @@ ctl /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor schedutil
 ctl /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor schedutil
 
 # Fequency tweaks to all CPUs
-ctl /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 3000
+ctl /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 75000
 ctl /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 0
 ctl /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl 0
 
-ctl /sys/devices/system/cpu/cpu1/cpufreq/schedutil/down_rate_limit_us 3000
-ctl /sys/devices/system/cpu/cpu1/cpufreq/schedutil/up_rate_limit_us 0
-ctl /sys/devices/system/cpu/cpu1/cpufreq/schedutil/pl 0
-
-ctl /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 3000
-ctl /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 0
-ctl /sys/devices/system/cpu/cpu2/cpufreq/schedutil/pl 0
-
-ctl /sys/devices/system/cpu/cpu3/cpufreq/schedutil/down_rate_limit_us 3000
-ctl /sys/devices/system/cpu/cpu3/cpufreq/schedutil/up_rate_limit_us 0
-ctl /sys/devices/system/cpu/cpu3/cpufreq/schedutil/pl 0
-
-ctl /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 4000
+ctl /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 75000
 ctl /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 0
 ctl /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl 0
 
-ctl /sys/devices/system/cpu/cpu5/cpufreq/schedutil/down_rate_limit_us 4000
-ctl /sys/devices/system/cpu/cpu5/cpufreq/schedutil/up_rate_limit_us 0
-ctl /sys/devices/system/cpu/cpu5/cpufreq/schedutil/pl 0
-
-ctl /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us 4000
-ctl /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us 0
-ctl /sys/devices/system/cpu/cpu6/cpufreq/schedutil/pl 0
-
-ctl /sys/devices/system/cpu/cpu7/cpufreq/schedutil/down_rate_limit_us 5000
+ctl /sys/devices/system/cpu/cpu7/cpufreq/schedutil/down_rate_limit_us 75000
 ctl /sys/devices/system/cpu/cpu7/cpufreq/schedutil/up_rate_limit_us 0
 ctl /sys/devices/system/cpu/cpu7/cpufreq/schedutil/pl 0
 
@@ -251,6 +232,12 @@ ctl /sys/devices/system/cpu/cpu4/online 1
 ctl /sys/devices/system/cpu/cpu5/online 1
 ctl /sys/devices/system/cpu/cpu6/online 1
 ctl /sys/devices/system/cpu/cpu7/online 1
+
+ctl /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 0
+ctl /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 0
+
+ctl /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 3
+ctl /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
 
 # Other CPU tweaks
 ctl 1024 /dev/cpuctl/cpu.shares
@@ -278,22 +265,22 @@ ctl /proc/sys/kernel/printk "0 0 0 0"
 ctl /proc/sys/kernel/sched_rt_runtime_us 955000
 
 # Network tweaks to reduced battery consumption when being "actively" connected to a network;
-ctl /proc/sys/net/core/netdev_max_backlog 128
-ctl /proc/sys/net/core/netdev_tstamp_prequeue 0
-ctl /proc/sys/net/ipv4/ipfrag_time 24
+#ctl /proc/sys/net/core/netdev_max_backlog 128
+#ctl /proc/sys/net/core/netdev_tstamp_prequeue 0
+#ctl /proc/sys/net/ipv4/ipfrag_time 24
 ctl /proc/sys/net/ipv4/tcp_congestion_control westwood
-ctl /proc/sys/net/ipv4/tcp_ecn 1
-ctl /proc/sys/net/ipv4/tcp_fastopen 3
-ctl /proc/sys/net/ipv4/tcp_sack 1
-ctl /proc/sys/net/ipv4/tcp_fack 1
-ctl /proc/sys/net/ipv4/tcp_tw_reuse 1
-ctl /proc/sys/net/ipv4/tcp_dsack 1
-ctl /proc/sys/net/ipv4/tcp_fwmark_accept 0
-ctl /proc/sys/net/ipv4/tcp_keepalive_intvl 320
-ctl /proc/sys/net/ipv4/tcp_keepalive_time 21600
-ctl /proc/sys/net/ipv4/tcp_no_metrics_save 1
-ctl /proc/sys/net/ipv4/tcp_slow_start_after_idle 0
-ctl /proc/sys/net/ipv6/ip6frag_time 48
+#ctl /proc/sys/net/ipv4/tcp_ecn 1
+#ctl /proc/sys/net/ipv4/tcp_fastopen 3
+#ctl /proc/sys/net/ipv4/tcp_sack 1
+#ctl /proc/sys/net/ipv4/tcp_fack 1
+#ctl /proc/sys/net/ipv4/tcp_tw_reuse 1
+#ctl /proc/sys/net/ipv4/tcp_dsack 1
+#ctl /proc/sys/net/ipv4/tcp_fwmark_accept 0
+#ctl /proc/sys/net/ipv4/tcp_keepalive_intvl 320
+#ctl /proc/sys/net/ipv4/tcp_keepalive_time 21600
+#ctl /proc/sys/net/ipv4/tcp_no_metrics_save 1
+#ctl /proc/sys/net/ipv4/tcp_slow_start_after_idle 0
+#ctl /proc/sys/net/ipv6/ip6frag_time 48
 
 # VMemory tweaks big improved balance between performance and battery life;
 ctl /proc/sys/vm/drop_caches 1
@@ -535,6 +522,22 @@ for i in ` find /sys/module -name debug_mask`; do
 	ctl $i 0
 done
 
+# Adjust a few display props for improved performance as well as overall reduced stuttering and power consumption;
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/mipi/hw_vsync_mode 0
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/mipi/vsync_enable 0
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/bl_max 175
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/brightness_max 175
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/panel_ack_disabled Y
+ctl /sys/kernel/debug/mdss_panel_fb0/intf0/partial_update_enabled 1
+
+# Kernel tweaks for overall improved performance;
+ctl /proc/sys/kernel/compat-log 0
+
+# Set this as low as possible for performance;
+for i in /sys/block/sd*/queue/iosched; do
+  ctl $i/back_seek_penalty 1
+done;
+
 kmsg2 $(date) 
 kmsg2 "Applied..."
 kmsg2 "----"
@@ -550,7 +553,7 @@ am start -a android.intent.action.MAIN -e toasttext "Some Launchers/Apps Optimis
 list="com.android.systemui com.google.android.launcher org.lineageos.trebuchet com.google.android.apps.plus com.deletescape.launchair com.android.launcher3 com.actionlauncher.playstore com.yandex.launcher com.google.android.apps.nexuslauncher com.miui9launcher.miuithemes com.huawei.android.launcher com.miui.home com.cma.launcher.lite com.jiubang.go.mini.launcher com.kkmlauncher-1 com.uprui.launcher.marshmallow com.android.launcher org.adw.launcher org.adwfreak.launcher net.alamoapps.launcher com.anddoes.launcher com.android.lmt com.chrislacy.actionlauncher.pro com.cyanogenmod.trebuchet com.gau.go.launcherex com.gtp.nextlauncher com.miui.mihome2 com.mobint.hololauncher com.mobint.hololauncher.hd com.qihoo360.launcher com.teslacoilsw.launcher com.tsf.shell org.zeam com.sonyericsson.home com.xperiaZ5.home com.sonymobile.simplehome com.teslacoilsw.launcher.prime com.miui.home com.anddoes.launcher.pro-1 com.anddoes.launcher-2 com.actionlauncher.playstore com.lge.launcher2 com.sec.android.app.launcher com.sec.android.app.twlauncher com.gtp.nextlauncher com.cyanogenport.trebuchet net.oneplus.launcher com.whatsapp org.thunderdog.challegram com.mkadp.blapptwo"
 
 renice -n 0 $(pgrep zygote) 2>/dev/null
-renice -n -20 $(pgrep kswapd0) 2>/dev/null
+#renice -n -20 $(pgrep kswapd0) 2>/dev/null
 renice -n 19 $(pgrep android.process.media) 2>/dev/null
 
 for class in $list; do
@@ -651,17 +654,17 @@ kmsg2 $(date)
 kmsg2 "Enabling/Tweaking ZRAM"
 kmsg2 "----"
 #
-swapoff /dev/zram0 > /dev/null 2>&1
-swapoff /dev/block/zram0 > /dev/null 2>&1
-swapoff /dev/block/vnswap0 > /dev/null 2>&1
-ctl /sys/block/zram0/reset 1
-ctl /sys/block/zram0/disksize 0
-ctl /sys/block/vnswap0/reset 1
-ctl /sys/block/vnswap0/disksize 0
-ctl /sys/block/zram0/max_comp_streams $CPUS
-ctl /sys/block/vnswap0/max_comp_streams $CPUS
-ctl /sys/block/zram0/disksize $SIZE
-ctl /sys/block/vnswap0/max_comp_streams $CPUS
+#swapoff /dev/zram0 > /dev/null 2>&1
+#swapoff /dev/block/zram0 > /dev/null 2>&1
+#swapoff /dev/block/vnswap0 > /dev/null 2>&1
+#ctl /sys/block/zram0/reset 1
+#ctl /sys/block/zram0/disksize 0
+#ctl /sys/block/vnswap0/reset 1
+#ctl /sys/block/vnswap0/disksize 0
+#ctl /sys/block/zram0/max_comp_streams $CPUS
+#ctl /sys/block/vnswap0/max_comp_streams $CPUS
+#ctl /sys/block/zram0/disksize $SIZE
+#ctl /sys/block/vnswap0/max_comp_streams $CPUS
 mkswap /dev/zram0 > /dev/null 2>&1
 mkswap /dev/block/zram0 > /dev/null 2>&1
 mkswap /dev/block/vnswap0 > /dev/null 2>&1
